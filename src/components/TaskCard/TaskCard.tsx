@@ -35,8 +35,7 @@ export const TaskCard = ({
       id={`box${id}`}
       draggable="true"
       onDragEnd={(ev) => {
-        setTaskStatus(ev.clientX, id, status)
-        console.log(ev)
+        setTaskStatus(ev.nativeEvent.pageX, id, status)
       }}
       className="p-2 mt-2 bg-white mx-auto bg-gradient-to-r from-sky-400 to-sky-500 shadow w-64 h-45 cursor-move"
     >

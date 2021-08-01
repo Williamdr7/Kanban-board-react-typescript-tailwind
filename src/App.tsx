@@ -17,12 +17,12 @@ export default function App() {
   })
 
   const columnsPosition: any = {
-    icebox: { start: 0, end: 450 },
-    backlog: { start: 450, end: 750 },
-    started: { start: 750, end: 1050 },
-    rejected: { start: 1050, end: 1350 },
-    finished: { start: 1350, end: 1700 },
-    delivered: { start: 1700, end: 2050 },
+    icebox: { start: 0, end: 300 },
+    backlog: { start: 300, end: 600 },
+    started: { start: 600, end: 900 },
+    rejected: { start: 900, end: 1200 },
+    finished: { start: 1220, end: 1500 },
+    delivered: { start: 1500, end: 2000 },
   }
 
   function setTaskStatus(
@@ -46,7 +46,7 @@ export default function App() {
       .filter((v) => !!v)[0]
 
     const newColumn = (tasks[newStatus] = [
-      ...tasks[newStatus],
+      ...tasks[newStatus].filter((oldTasks: any) => oldTasks.id !== task.id),
       { ...task, status: newStatus },
     ])
 
@@ -55,9 +55,6 @@ export default function App() {
       [currentStatus]: oldColumn,
       [newStatus]: newColumn,
     }))
-
-    console.log('newColumn' + newStatus, newColumn)
-    console.log('oldColumn, ', oldColumn)
   }
 
   useEffect(() => {
@@ -74,20 +71,18 @@ export default function App() {
       {colums.map((column) => (
         <Column>
           <h4 className="mb-5">{column.title}</h4>
-          <div className="bg-gray-100 h-screen p-2">
-            {data
-              .filter((card) => card.status === column.type)
-              .map((task) => (
-                <TaskCard
-                  status={task.status}
-                  setTaskStatus={setTaskStatus}
-                  id={task.id}
-                  tag={task.tag}
-                  initiative={task.initiative}
-                  description={task.description}
-                  sprint={task.sprint}
-                />
-              ))}
+          <div className="w-72 bg-gray-100 h-screen p-2">
+            {tasks[column.type].map((task: any) => (
+              <TaskCard
+                status={task.status}
+                setTaskStatus={setTaskStatus}
+                id={task.id}
+                tag={task.tag}
+                initiative={task.initiative}
+                description={task.description}
+                sprint={task.sprint}
+              />
+            ))}
           </div>
         </Column>
       ))}
