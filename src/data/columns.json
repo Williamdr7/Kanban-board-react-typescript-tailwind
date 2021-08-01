@@ -1,0 +1,27 @@
+[
+  {
+    "type": "icebox",
+    "title": "IceBox"
+  },
+  {
+    "type": "backlog",
+    "title": "BackLog"
+  },
+  {
+    "type": "started",
+    "title": "Started"
+  },
+  {
+    "type": "rejected",
+    "title": "Rejected"
+  },
+  {
+    "type": "finished",
+    "title": "Finished"
+  },
+
+  {
+    "type": "delivered",
+    "title": "Delivered"
+  }
+]
