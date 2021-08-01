@@ -16,6 +16,7 @@ export default function App() {
     delivered: [],
   })
 
+  console.log(data, tasks)
   const columnsPosition: any = {
     icebox: { start: 0, end: 300 },
     backlog: { start: 300, end: 600 },
@@ -58,22 +59,33 @@ export default function App() {
   }
 
   useEffect(() => {
+    let newTasks: any = {
+      icebox: [],
+      backlog: [],
+      started: [],
+      rejected: [],
+      finished: [],
+      delivered: [],
+    }
     data.map((task: any) => {
-      setTasks((stTasks: any) => ({
-        ...stTasks,
-        [task.status]: [...tasks[task.status], task],
-      }))
+      newTasks = {
+        ...newTasks,
+        [task.status]: [...newTasks[task.status], task],
+      }
+      setTasks(newTasks)
+      return null
     })
   }, [])
 
   return (
     <div className="h-auto w-auto mx-auto flex">
       {colums.map((column) => (
-        <Column>
+        <Column key={column.title}>
           <h4 className="mb-5">{column.title}</h4>
           <div className="w-72 bg-gray-100 h-screen p-2">
             {tasks[column.type].map((task: any) => (
               <TaskCard
+                key={task.id}
                 status={task.status}
                 setTaskStatus={setTaskStatus}
                 id={task.id}
