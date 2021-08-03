@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="KanBan Board" title="kanban-board" src=".github/kanban.gif" width="200px" />
+    <img alt="KanBan Board" title="kanban-board" src=".github/kanban.gif" width="1200px" />
 </p>
 
 In the project directory, you can run:
