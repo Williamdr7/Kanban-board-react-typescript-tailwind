@@ -16,7 +16,6 @@ export default function App() {
     delivered: [],
   })
 
-  console.log(data, tasks)
   const columnsPosition: any = {
     icebox: { start: 0, end: 300 },
     backlog: { start: 300, end: 600 },
@@ -78,7 +77,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="h-auto w-auto mx-auto flex">
+    <div className="h-auto w-auto mx-auto flex mt-5">
       {colums.map((column) => (
         <Column key={column.title}>
           <h4 className="mb-5">{column.title}</h4>
